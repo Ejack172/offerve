@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const About = () => {
+    const [openFaq, setOpenFaq] = useState(null);
+
+    const toggleFaq = (index) => {
+        setOpenFaq(openFaq === index ? null : index);
+    };
+
     useEffect(() => {
         document.title = "About Offerve - India's #1 Coupon & Deal Discovery Engine";
         const metaDescription = document.querySelector('meta[name="description"]');
@@ -10,6 +16,17 @@ const About = () => {
             metaDescription.setAttribute('content', 'Learn about Offerve, the leading destination for verified coupons, promo codes, and exclusive deals in India. Discover how we help millions save money daily.');
         }
     }, []);
+
+    const faqList = [
+        { q: "Is Offerve completely free to use?", a: "Yes! Offerve is 100% free for all users. You never have to pay a subscription fee or hidden charge to access our coupons." },
+        { q: "How often are coupons updated?", a: "Our database is updated in real-time. We have a dedicated team and automated systems that add hundreds of new coupons daily and remove expired ones to keep your experience frustration-free." },
+        { q: "Do I need to register to use a coupon?", a: "No registration is required. You can search for a store, click on a coupon to copy it, and start saving immediately at the store's checkout page." },
+        { q: "What if a coupon doesn't work?", a: "While we strive for 100% accuracy, sometimes retailers change terms without notice. If you find a broken code, please verify the terms and conditions. If it still fails, let us know via our Contact page, and we'll fix it instantly." },
+        { q: "Do you have a mobile app?", a: "Currently, we offer a highly optimized mobile-responsive website that works perfectly on all smartphones and tablets, so you can save on the go without downloading an app." },
+        { q: "Is it safe to use coupons from Offerve?", a: "Absolutely. We only partner with reputable online retailers and verify our links to ensure they are safe and secure. We respect your privacy and do not track your personal shopping data." },
+        { q: "Can I submit a coupon I found?", a: "Yes, we love community contributions! If you found a working code that we missed, please share it through our Contact Us page so other shoppers can benefit." },
+        { q: "How do you make money if it's free?", a: "We may earn a small commission from retailers when you make a purchase using our links. This comes at no extra cost to you—in fact, it ensures we can keep the platform free and running." }
+    ];
 
     return (
         <div className="about-page">
@@ -83,35 +100,55 @@ const About = () => {
                             </p>
                         </div>
 
-                        {/* FAQ Section */}
+                        {/* FAQ Section with Accordion */}
                         <div>
-                            <h2 style={{ fontSize: '2.2rem', marginBottom: '1.5rem', color: 'var(--text-main)', textAlign: 'center' }}>Frequently Asked Questions</h2>
+                            <h2 style={{ fontSize: '2.2rem', marginBottom: '2rem', color: 'var(--text-main)', textAlign: 'center' }}>Frequently Asked Questions</h2>
                             <div style={{ display: 'grid', gap: '1rem' }}>
-                                {[
-                                    { q: "Is Offerve completely free to use?", a: "Yes! Offerve is 100% free for all users. We may earn a small commission from retailers when you use our links, but this never affects the price you pay." },
-                                    { q: "How often are coupons updated?", a: "Our database is updated in real-time. We add hundreds of new coupons daily and remove expired ones to keep your experience frustration-free." },
-                                    { q: "Do I need to register to use a coupon?", a: "No registration is required. You can search for a store, click on a coupon, and start saving immediately." },
-                                    { q: "What if a coupon doesn't work?", a: "While we strive for 100% accuracy, sometimes retailers change terms without notice. If you find a broken code, let us know, and we'll fix it instantly." }
-                                ].map((faq, idx) => (
-                                    <div key={idx} style={{ borderBottom: '1px solid #eee', paddingBottom: '1.5rem' }}>
-                                        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--text-main)' }}>{faq.q}</h3>
-                                        <p style={{ color: 'var(--text-gray)', margin: 0 }}>{faq.a}</p>
+                                {faqList.map((faq, idx) => (
+                                    <div
+                                        key={idx}
+                                        onClick={() => toggleFaq(idx)}
+                                        style={{
+                                            borderBottom: '1px solid #eee',
+                                            padding: '1.5rem',
+                                            background: openFaq === idx ? '#f8f9fa' : 'white',
+                                            borderRadius: '8px',
+                                            cursor: 'pointer',
+                                            transition: 'background 0.3s ease'
+                                        }}
+                                    >
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <h3 style={{ fontSize: '1.15rem', margin: 0, color: 'var(--text-main)', fontWeight: '600' }}>{faq.q}</h3>
+                                            <span style={{
+                                                fontSize: '1.5rem',
+                                                color: 'var(--primary)',
+                                                lineHeight: '1',
+                                                transform: openFaq === idx ? 'rotate(45deg)' : 'rotate(0deg)',
+                                                transition: 'transform 0.3s ease',
+                                                display: 'inline-block'
+                                            }}>+</span>
+                                        </div>
+                                        {openFaq === idx && (
+                                            <div style={{ marginTop: '1rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.05)', animation: 'fadeIn 0.3s ease' }}>
+                                                <p style={{ color: 'var(--text-gray)', lineHeight: '1.6', margin: 0 }}>{faq.a}</p>
+                                            </div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                    </div>
-                </section>
+                        {/* CTA Section */}
+                        <section style={{ background: 'var(--primary)', padding: '4rem 1.5rem', textAlign: 'center', color: 'white', borderRadius: '16px', marginTop: '4rem' }}>
+                            <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
+                                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Ready to Start Saving?</h2>
+                                <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: '0.9' }}>Join massive community of smart shoppers and never pay full price again.</p>
+                                <a href="/" style={{ display: 'inline-block', background: 'white', color: 'var(--primary)', padding: '1rem 2.5rem', fontSize: '1.2rem', fontWeight: 'bold', borderRadius: '50px', textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>
+                                    Browse Today's Top Deals
+                                </a>
+                            </div>
+                        </section>
 
-                {/* CTA Section */}
-                <section style={{ background: 'var(--primary)', padding: '4rem 1.5rem', textAlign: 'center', color: 'white' }}>
-                    <div className="container" style={{ maxWidth: '700px', margin: '0 auto' }}>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Ready to Start Saving?</h2>
-                        <p style={{ fontSize: '1.2rem', marginBottom: '2rem', opacity: '0.9' }}>Join massive community of smart shoppers and never pay full price again.</p>
-                        <a href="/" style={{ display: 'inline-block', background: 'white', color: 'var(--primary)', padding: '1rem 2.5rem', fontSize: '1.2rem', fontWeight: 'bold', borderRadius: '50px', textDecoration: 'none', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>
-                            Browse Today's Top Deals
-                        </a>
                     </div>
                 </section>
 

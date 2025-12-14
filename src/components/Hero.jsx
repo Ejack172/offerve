@@ -48,25 +48,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="search-container">
-            <div className="main-search">
-              <input
-                type="text"
-                placeholder="Search for a brand... (e.g. Uber, Amazon, Dominos)"
-                className="hero-input"
-              />
-              <button className="hero-search-btn">Search</button>
-            </div>
 
-            <div className="popular-tags">
-              <span className="tag-label">Trending:</span>
-              <a href="#" className="tag">Recharge</a>
-              <a href="#" className="tag">Fashion</a>
-              <a href="#" className="tag">Electronics</a>
-              <a href="#" className="tag">Travel</a>
-              <a href="#" className="tag">Food</a>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -160,74 +142,7 @@ const Hero = () => {
           transform: scale(1.2);
         }
 
-        .search-container {
-          background: rgba(255, 255, 255, 0.6);
-          padding: 2rem;
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          backdrop-filter: blur(10px);
-          box-shadow: var(--shadow-lg);
-        }
 
-        .main-search {
-          display: flex;
-          gap: 1rem;
-          margin-bottom: 1.5rem;
-        }
-
-        .hero-input {
-          flex: 1;
-          background: white;
-          border: 1px solid rgba(0,0,0,0.1);
-          padding: 1rem 1.5rem;
-          border-radius: var(--radius-md);
-          color: var(--text-main);
-          font-size: 1.1rem;
-          outline: none;
-          transition: var(--transition);
-        }
-
-        .hero-input:focus {
-          border-color: var(--primary);
-          box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .hero-search-btn {
-          background: var(--primary);
-          color: white;
-          padding: 0 2rem;
-          font-size: 1rem;
-          font-weight: 600;
-          border-radius: var(--radius-md);
-          transition: var(--transition);
-        }
-
-        .hero-search-btn:hover {
-          background: var(--primary-hover);
-        }
-
-        .popular-tags {
-          display: flex;
-          justify-content: center;
-          gap: 0.8rem;
-          flex-wrap: wrap;
-          font-size: 0.9rem;
-        }
-
-        .tag-label {
-          color: var(--text-muted);
-        }
-
-        .tag {
-          color: var(--text-main);
-          border-bottom: 1px dashed var(--text-muted);
-          transition: var(--transition);
-        }
-
-        .tag:hover {
-          color: var(--primary);
-          border-color: var(--primary);
-        }
 
         .hero-bg {
           position: absolute;

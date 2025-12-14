@@ -8,11 +8,17 @@ const SNAPSHOT_KEY = 'offerve_weekly_snapshot';
 const getStoredData = () => {
     try {
         const data = localStorage.getItem(STORAGE_KEY);
-        return data ? JSON.parse(data) : {
-            coupons: {}, // { "storeSlug-couponId": { copy: 0, click: 0, view: 0, lastEvent: ts } }
-            stores: {},  // { "storeSlug": { totalCopy: 0, ... } }
-            events: []   // Log of recent events for admin feed
-        };
+        const parsed = data ? JSON.parse(data) : null;
+
+        // Validation: Ensure structure matches expected shape
+        if (!parsed || !parsed.coupons || !parsed.stores || !parsed.events) {
+            return {
+                coupons: {},
+                stores: {},
+                events: []
+            };
+        }
+        return parsed;
     } catch (e) {
         console.error("Analytics Data Corrupt, resetting", e);
         return { coupons: {}, stores: {}, events: [] };

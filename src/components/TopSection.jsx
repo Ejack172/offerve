@@ -1,24 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import CouponCard from './CouponCard';
-import analytics from '../services/analytics';
+import { stores } from '../data/stores';
+import { getStoreCoupons } from '../data/coupons';
 
 const TopSection = () => {
     const [topCoupons, setTopCoupons] = useState([]);
-    const [refresh, setRefresh] = useState(0);
+    const [copyCounts, setCopyCounts] = useState({});
 
     useEffect(() => {
-        // Fetch top 30 coupons from the central analytics system
-        // This ensures the data matches the admin dashboard
-        const data = analytics.getTopCoupons(30);
-        setTopCoupons(data);
-    }, [refresh]);
+        // Load counts from local storage on mount
+        const storedCounts = JSON.parse(localStorage.getItem('offerve_copy_counts') || '{}');
+        setCopyCounts(storedCounts);
+        updateRankings(storedCounts);
+    }, []);
 
-    const handleRefresh = () => {
-        // Force a re-fetch after a short delay to allow the click to be registered
-        // CouponCard handles the actual tracking call
-        setTimeout(() => {
-            setRefresh(prev => prev + 1);
-        }, 100);
+    const updateRankings = (counts) => {
+        let allCoupons = [];
+
+        stores.forEach(store => {
+            const storeCoupons = getStoreCoupons(store);
+            storeCoupons.forEach(coupon => {
+                const trackingKey = `${store.slug}-${coupon.id}`;
+                allCoupons.push({
+                    ...coupon,
+                    trackingKey,
+                    merchant: store,
+                    copyCount: counts[trackingKey] || 0
+                });
+            });
+        });
+
+        // Sort by copy count (desc), then randomness/recency (simulated by existing order + slight random)
+        // Note: For stability in this demo, strict sort by count, then ID
+        allCoupons.sort((a, b) => {
+            if (b.copyCount !== a.copyCount) return b.copyCount - a.copyCount;
+            // Secondary sort: pseudo-random but stable for demo? Or just store ID
+            return a.id - b.id;
+        });
+
+        setTopCoupons(allCoupons.slice(0, 5)); // Show top 5 to save space, or 10 if layout permits
+    };
+
+    const handleTrackCopy = (trackingKey) => {
+        const newCounts = { ...copyCounts, [trackingKey]: (copyCounts[trackingKey] || 0) + 1 };
+        setCopyCounts(newCounts);
+        localStorage.setItem('offerve_copy_counts', JSON.stringify(newCounts));
+        updateRankings(newCounts);
     };
 
     return (
@@ -28,30 +55,20 @@ const TopSection = () => {
                     {/* Top Coupons Block */}
                     <div className="top-block coupons-block">
                         <div className="block-header">
-                            <h2>🔥 Top 30 Trending Coupons</h2>
-                            <span className="live-badge">Live Usage</span>
+                            <h2>🔥 Top Coupons</h2>
+                            <span className="live-badge">Live Ranking</span>
                         </div>
-                        <div className="coupons-scroll-container">
-                            <div className="coupons-stack">
-                                {topCoupons.length > 0 ? (
-                                    topCoupons.map((coupon, index) => (
-                                        <div key={coupon.trackingKey} className="ranked-coupon-wrapper">
-                                            <div className="rank-number">#{index + 1}</div>
-                                            <CouponCard
-                                                {...coupon}
-                                                // If it's the #1 coupon, show a special ribbon
-                                                ribbon={index === 0 ? "MOST COPIED" : null}
-                                                // When copied, refresh the list to show updated rankings
-                                                onCopy={handleRefresh}
-                                            />
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p style={{ textAlign: 'center', color: '#64748b', padding: '2rem' }}>
-                                        Start using coupons to see trending offers here!
-                                    </p>
-                                )}
-                            </div>
+                        <div className="coupons-stack">
+                            {topCoupons.map((coupon, index) => (
+                                <div key={coupon.trackingKey} className="ranked-coupon-wrapper">
+                                    <div className="rank-number">#{index + 1}</div>
+                                    <CouponCard
+                                        {...coupon}
+                                        ribbon={index === 0 ? "MOST COPIED" : coupon.ribbon}
+                                        onCopy={() => handleTrackCopy(coupon.trackingKey)}
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -113,7 +130,6 @@ const TopSection = () => {
                     display: grid;
                     grid-template-columns: 1.2fr 0.8fr; /* 60/40 split */
                     gap: 2.5rem;
-                    align-items: start; /* Prevent stretching */
                 }
 
                 .block-header {
@@ -149,36 +165,10 @@ const TopSection = () => {
                     100% { opacity: 1; }
                 }
 
-                /* Scroll Container for 30 items */
-                .coupons-scroll-container {
-                    max-height: 800px; /* Adjust based on desired height */
-                    overflow-y: auto;
-                    padding-right: 10px; /* Space for scrollbar */
-                    /* Custom Scrollbar */
-                    scrollbar-width: thin;
-                    scrollbar-color: #cbd5e1 #f1f5f9;
-                }
-
-                .coupons-scroll-container::-webkit-scrollbar {
-                    width: 6px;
-                }
-                .coupons-scroll-container::-webkit-scrollbar-track {
-                    background: #f1f5f9;
-                    border-radius: 4px;
-                }
-                .coupons-scroll-container::-webkit-scrollbar-thumb {
-                    background: #cbd5e1;
-                    border-radius: 4px;
-                }
-                .coupons-scroll-container::-webkit-scrollbar-thumb:hover {
-                    background: #94a3b8;
-                }
-
                 .coupons-stack {
                     display: flex;
                     flex-direction: column;
                     gap: 1.5rem;
-                    padding-bottom: 1rem; /* Padding at bottom for scroll */
                 }
 
                 .ranked-coupon-wrapper {
@@ -213,8 +203,6 @@ const TopSection = () => {
                     display: flex;
                     flex-direction: column;
                     gap: 1.5rem;
-                    position: sticky;
-                    top: 2rem; /* Make this stick while scrolling coupons if needed */
                 }
 
                 .offer-card {
@@ -293,9 +281,6 @@ const TopSection = () => {
                     }
                     .offers-block {
                         margin-top: 2rem;
-                    }
-                    .coupons-scroll-container {
-                        max-height: 600px; /* Slightly shorter on mobile */
                     }
                 }
 

@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import analytics from '../services/analytics';
 
 const AdminDashboard = () => {
+    console.log("AdminDashboard Component Mounting...");
     const [activeTab, setActiveTab] = useState('overview');
     const [coupons, setCoupons] = useState([]);
     const [stores, setStores] = useState([]);

@@ -1,7 +1,18 @@
-AddType image/svg+xml .svg .svgz
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^$ dist/index.html [L]
-    RewriteCond %{REQUEST_URI} !^/dist/
-    RewriteRule ^(.*)$ dist/$1 [L]
+  RewriteEngine On
+  RewriteBase /
+  
+  # Serve index.html from dist for root request
+  RewriteRule ^$ dist/index.html [L]
+  
+  # If file/dir doesn't exist in root, check dist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/dist/
+  RewriteRule ^(.*)$ dist/$1 [L]
+  
+  # SPA Fallback: If request inside dist doesn't exist, serve dist/index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^dist/.*$ dist/index.html [L]
 </IfModule>

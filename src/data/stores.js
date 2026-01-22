@@ -7,9 +7,22 @@ export const stores = [
         slug: "myntra-coupon-code",
         description: "Save on the latest fashion trends with verified Myntra coupons.",
         bestOffers: "Up to 80% Off",
+        about: "Myntra is India’s premier fashion and lifestyle destination, revolutionizing the way you shop for clothing, footwear, accessories, and beauty products. As a one-stop shop for all things fashion, Myntra brings you the latest trends from top international brands like Nike, Puma, H&M, and Levi's, alongside popular domestic labels. Whether you are looking for chic western wear, elegant ethnic outfits for festivals, or high-performance activewear, Myntra has something for everyone.\n\nShoppers love Myntra for its hassle-free shopping experience, genuine products, and the exclusive 'Myntra Insider' loyalty program. The platform is famous for its massive sale events like the 'End of Reason Sale' (EORS) and 'Big Fashion Festival,' offering discounts of up to 80%. On Offerve, we enhance your savings by providing verified Myntra coupon codes, bank offers, and exclusive promo codes. Our dedicated team updates these deals daily, ensuring you never miss a chance to save on your favorite brands.",
+        howToSteps: [
+            "Visit the Myntra coupon page on Offerve",
+            "Choose a working Myntra coupon or offer from the list",
+            "Click on 'Copy' or 'View Deal' to unlock the discount",
+            "You’ll be redirected to the official Myntra website or mobile app",
+            "Add your favorite fashion items to your cart",
+            "Paste the coupon code at checkout in the 'Apply Coupon' field",
+            "Complete the purchase and enjoy instant savings"
+        ],
         faqs: [
-            { q: "How do I use Myntra coupons?", a: "Copy the code from Offerve and apply it at checkout on the Myntra app or website." },
-            { q: "Does Myntra offer free shipping?", a: "Yes, focused on orders above a certain value or for Myntra Insider members." }
+            { q: "How do I apply a Myntra coupon code?", a: "Copy the code from Offerve, go to your Myntra cart, and paste it in the 'Apply Coupon' section before payment to get the discount." },
+            { q: "Are Myntra coupon codes on Offerve verified?", a: "Yes, our team manually verifies every Myntra coupon and offer daily to ensure they are working and valid." },
+            { q: "Can I use Myntra coupons on the mobile app?", a: "Absolutely! Most Myntra coupons work on both the website and the mobile app, with some exclusive 'App-Only' deals." },
+            { q: "Why is my Myntra coupon not working?", a: "It might be expired, not applicable to the specific items in your cart (like already discounted products), or you may not meet the minimum order value." },
+            { q: "How often are Myntra offers updated on Offerve?", a: "We update Myntra offers continuously, tracking new bank deals, flash sales, and exclusive promo codes as soon as they go live." }
         ]
     },
     {
@@ -193,5 +206,3 @@ export const stores = [
         ]
     }
 ];
-
-// Force deployment update: 2025-12-14

@@ -153,34 +153,51 @@ const StorePage = () => {
                     </div>
 
                     <div className="store-layout">
-                        <div className="coupons-column">
-                            <div className="filter-bar">
-                                <span className="filter-label">Sort By:</span>
-                                <button className="filter-btn active">Top Rated</button>
-                                <button className="filter-btn">Exclusive</button>
-                                <button className="filter-btn">Expiring Soon</button>
+                        <div className="coupons-column" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                            {/* 1. Coupons List */}
+                            <div>
+                                <div className="filter-bar">
+                                    <span className="filter-label">Sort By:</span>
+                                    <button className="filter-btn active">Top Rated</button>
+                                    <button className="filter-btn">Exclusive</button>
+                                    <button className="filter-btn">Expiring Soon</button>
+                                </div>
+
+                                <div className="coupons-list">
+                                    {storeCoupons.map(coupon => (
+                                        <CouponCard
+                                            key={coupon.id}
+                                            merchant={{ name: store.name, domain: store.domain, logo: `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${store.domain}&size=128` }}
+                                            {...coupon}
+                                        />
+                                    ))}
+                                </div>
+
+                                <div className="load-more-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
+                                    <button className="load-more-btn">Show More {store.name} Offers</button>
+                                </div>
                             </div>
 
-                            <div className="coupons-list">
-                                {storeCoupons.map(coupon => (
-                                    <CouponCard
-                                        key={coupon.id}
-                                        merchant={{ name: store.name, domain: store.domain, logo: `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${store.domain}&size=128` }}
-                                        {...coupon}
-                                    />
-                                ))}
-                            </div>
-
-                            <div className="load-more-container" style={{ textAlign: 'center', marginTop: '2rem' }}>
-                                <button className="load-more-btn">Show More {store.name} Offers</button>
-                            </div>
+                            {/* 2. How to Use Section (Only if available, e.g. Myntra) */}
+                            {store.howToSteps && (
+                                <section className="store-section how-to-section">
+                                    <h2 className="section-title">How to Use {store.name} Coupon Code</h2>
+                                    <div className="how-to-content">
+                                        <ol className="steps-list">
+                                            {store.howToSteps.map((step, i) => (
+                                                <li key={i}>{step}</li>
+                                            ))}
+                                        </ol>
+                                    </div>
+                                </section>
+                            )}
                         </div>
 
                         <aside className="sidebar">
                             <div className="sidebar-widget about-widget">
                                 <h3>About {store.name}</h3>
-                                <p className="widget-text">{store.description}</p>
-                                <p className="widget-text" style={{ marginTop: '0.5rem' }}>
+                                <div className="widget-text" style={{ whiteSpace: 'pre-line' }}>{store.about || store.description}</div>
+                                <p className="widget-text" style={{ marginTop: '1rem', borderTop: '1px dashed #e2e8f0', paddingTop: '0.8rem' }}>
                                     Current Best Offer: <strong>{store.bestOffers}</strong>
                                 </p>
                             </div>
@@ -477,6 +494,75 @@ const StorePage = () => {
                     .store-stats { justify-content: center; }
                     .filter-bar { overflow-x: auto; padding-bottom: 1rem; }
                 }
+
+                .store-section {
+                    background: white;
+                    padding: 2rem;
+                    border-radius: var(--radius-lg);
+                    border: 1px solid rgba(0,0,0,0.05);
+                    box-shadow: var(--shadow-sm);
+                }
+
+                .section-title {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    margin-bottom: 1.5rem;
+                    color: var(--text-main);
+                    padding-bottom: 0.8rem;
+                    border-bottom: 1px solid #f1f5f9;
+                }
+
+                .steps-list {
+                    padding-left: 1.5rem;
+                    color: var(--text-body);
+                }
+
+                .steps-list li {
+                    margin-bottom: 0.8rem;
+                    line-height: 1.6;
+                    font-size: 1rem;
+                }
+
+                .faq-list {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+
+                .faq-item {
+                    border: 1px solid #e2e8f0;
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+
+                .faq-question {
+                    padding: 1rem 1.5rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    background: #f8fafc;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    color: var(--text-main);
+                    list-style: none; /* Hide default triangle */
+                }
+                
+                .faq-question::-webkit-details-marker { display: none; }
+
+                .faq-question .icon { transition: transform 0.3s; font-size: 0.7em; opacity: 0.6; }
+                .faq-item[open] .faq-question .icon { transform: rotate(180deg); }
+
+                .faq-answer {
+                    padding: 1.5rem;
+                    background: white;
+                    border-top: 1px solid #e2e8f0;
+                    color: var(--text-body);
+                    line-height: 1.6;
+                }
+                
+                .stats-list { list-style: none; }
+                .stats-list li { margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--text-body); border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.8rem; }
+                .stats-list li:last-child { border-bottom: none; }
 
             `}</style>
         </div>

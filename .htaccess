@@ -3,44 +3,34 @@
   RewriteBase /
   
   # ----------------------------------------------------------------------
-  # HOSTINGER / LITESPEED MOBILE FIX
+  # VALIDATION: HOSTINGER / LITESPEED MOBILE FIX
   # ----------------------------------------------------------------------
-  # Disable LiteSpeed Cache for this site to prevent mobile blank screen
+  # Disable LiteSpeed Cache for this site to prevent mobile blank screen/caching issues
   <IfModule LiteSpeed>
     CacheDisable public /
     RewriteRule .* - [E=Cache-Control:no-cache]
   </IfModule>
 
-  # Disable mod_pagespeed (often causes JS double-compression issues)
+  # Disable mod_pagespeed to prevent JS conflicts
   <IfModule pagespeed_module>
     ModPagespeed off
   </IfModule>
 
   # ----------------------------------------------------------------------
-  # ROUTING LOGIC
+  # ROUTING LOGIC (SPA)
   # ----------------------------------------------------------------------
-
-  # 1. Force index.html to serve from dist (Prevent serving Source index.html)
-  RewriteRule ^index\.html$ dist/index.html [L]
-  RewriteRule ^$ dist/index.html [L]
   
-  # 2. If valid file/dir exists in root AND IS NOT INDEX.HTML, serve it
-  RewriteCond %{REQUEST_URI} !^/index\.html$ [NC]
+  # If the requested file or directory exists, serve it directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # 3. If file doesn't exist in root, check dist
-  RewriteCond %{REQUEST_URI} !^/dist/
-  RewriteRule ^(.*)$ dist/$1 [L]
-  
-  # 4. SPA Fallback: If request inside dist also doesn't exist, serve dist/index.html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^dist/.*$ dist/index.html [L]
+  # All other requests should be rewritten to index.html
+  RewriteRule ^ index.html [L]
+
 </IfModule>
 
-# Force no-cache for HTML to ensure mobile gets fresh content
+# Force no-cache for HTML to ensure users always get the latest version
 <FilesMatch "\.(html|htm)$">
   Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
   Header set Pragma "no-cache"

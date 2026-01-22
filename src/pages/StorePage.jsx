@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import CouponCard from '../components/CouponCard';
 import { stores } from '../data/stores';
 import { getStoreCoupons } from '../data/coupons';
+import NotFound from './NotFound';
 
 const StorePage = () => {
     const { slug } = useParams();
@@ -13,16 +14,18 @@ const StorePage = () => {
     const [storeCoupons, setStoreCoupons] = useState([]);
     const [relatedStores, setRelatedStores] = useState([]);
     const [stats, setStats] = useState({ active: 0, verified: 0 });
+    const [isNotFound, setIsNotFound] = useState(false);
 
     useEffect(() => {
         // Find store by slug
         const foundStore = stores.find(s => s.slug === slug);
 
         if (!foundStore) {
-            navigate('/stores');
+            setIsNotFound(true);
             return;
         }
 
+        setIsNotFound(false);
         setStore(foundStore);
 
         // Generate dynamic coupons using the new generator
@@ -66,6 +69,7 @@ const StorePage = () => {
 
     }, [slug, navigate]);
 
+    if (isNotFound) return <NotFound />;
     if (!store) return <div className="loading" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
 
     const currentYear = new Date().getFullYear();

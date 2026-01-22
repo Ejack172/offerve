@@ -2,7 +2,42 @@
   "hash": "e632be4a",
   "configHash": "f8c5eb43",
   "lockfileHash": "083f40dd",
-  "browserHash": "01acf007",
-  "optimized": {},
-  "chunks": {}
+  "browserHash": "fdad876b",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "001d2dba",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "e3dfc031",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "50152f51",
+      "needsInterop": false
+    },
+    "fuse.js": {
+      "src": "../../node_modules/fuse.js/dist/fuse.mjs",
+      "file": "fuse__js.js",
+      "fileHash": "e2cb35fb",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-COLM35DY": {
+      "file": "chunk-COLM35DY.js"
+    },
+    "chunk-GBJLWGQN": {
+      "file": "chunk-GBJLWGQN.js"
+    },
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
+    }
+  }
 }

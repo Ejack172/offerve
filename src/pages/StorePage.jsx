@@ -6,6 +6,7 @@ import CouponCard from '../components/CouponCard';
 import { stores } from '../data/stores';
 import { getStoreCoupons } from '../data/coupons';
 import NotFound from './NotFound';
+import SEO from '../components/SEO';
 
 const StorePage = () => {
     const { slug } = useParams();
@@ -36,32 +37,6 @@ const StorePage = () => {
             verified: generatedCoupons.filter(c => c.verified).length
         });
 
-        // SEO: Dynamic Page Title & Meta Tags
-        const currentYear = new Date().getFullYear();
-        const pageTitle = `Best ${foundStore.name} Coupon Codes, Promo Codes & Offers – ${currentYear} | Offerve`;
-        const metaDesc = `Find the latest ${foundStore.name} coupon codes, promo codes, and verified offers. Updated daily so you can save more on ${foundStore.name} shopping. Exclusive deals only on Offerve.`;
-
-        document.title = pageTitle;
-
-        // Helper to set meta tags
-        const setMeta = (name, content, attribute = 'name') => {
-            let element = document.querySelector(`meta[${attribute}="${name}"]`);
-            if (!element) {
-                element = document.createElement('meta');
-                element.setAttribute(attribute, name);
-                document.head.appendChild(element);
-            }
-            element.setAttribute('content', content);
-        };
-
-        setMeta('description', metaDesc);
-        setMeta('og:title', pageTitle, 'property');
-        setMeta('og:description', `Verified deals and offers for ${foundStore.name}.`, 'property');
-        setMeta('og:url', `https://offerve.com/${slug}`, 'property');
-        // Placeholder for store logo in OG image
-        setMeta('og:image', `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${foundStore.domain}&size=256`, 'property');
-        setMeta('twitter:card', 'summary_large_image', 'name');
-
         // Related Stores
         const otherStores = stores.filter(s => s.id !== foundStore.id);
         const randomStores = otherStores.sort(() => 0.5 - Math.random()).slice(0, 4);
@@ -72,10 +47,33 @@ const StorePage = () => {
     if (isNotFound) return <NotFound />;
     if (!store) return <div className="loading" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
 
+
+    // SEO: Dynamic Page Title & Meta Tags
     const currentYear = new Date().getFullYear();
+    const pageTitle = `Best ${store.name} Coupon Codes, Promo Codes & Offers – ${currentYear}`;
+    const metaDesc = `Find the latest ${store.name} coupon codes, promo codes, and verified offers. Updated daily so you can save more on ${store.name} shopping. Exclusive deals only on Offerve.`;
+
+    // Schema using SEO component
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://offerve.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Stores", "item": "https://offerve.com/stores" },
+            { "@type": "ListItem", "position": 3, "name": store.name, "item": `https://offerve.com/${store.slug}` }
+        ]
+    };
 
     return (
         <div className="store-page">
+            <SEO
+                title={pageTitle}
+                description={metaDesc}
+                keywords={`${store.name} coupons, ${store.name} promo codes, ${store.name} offers, ${store.name} discount code`}
+                canonical={`/${store.slug}`}
+                image={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${store.domain}&size=256`}
+                schema={breadcrumbSchema}
+            />
             <Header />
 
             <main className="main-content">

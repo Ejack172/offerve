@@ -7,10 +7,30 @@ import CategorySection from '../components/CategorySection';
 import DealsGrid from '../components/DealsGrid';
 import Footer from '../components/Footer';
 import SEOContent from '../components/SEOContent';
+import SEO from '../components/SEO';
 
 const Home = () => {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Offerve",
+        "url": "https://offerve.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://offerve.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    };
+
     return (
         <div className="home-page">
+            <SEO
+                title="Best Coupons, Promo Codes & Deals in India | Save on Top Brands"
+                description="Discover verified coupon codes, promo codes, and deals across India’s top stores. Offerve helps you save more with trusted offers."
+                keywords="coupons, promo codes, discount offers, deals India, online shopping discounts, save money online, Offerve coupons"
+                canonical="/"
+                schema={schema}
+            />
             <Header />
             <main>
                 <Hero />

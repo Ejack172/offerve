@@ -1,31 +1,37 @@
 {
-  "hash": "e632be4a",
+  "hash": "d68f26ad",
   "configHash": "f8c5eb43",
-  "lockfileHash": "083f40dd",
-  "browserHash": "fdad876b",
+  "lockfileHash": "d3d686ea",
+  "browserHash": "4da94d13",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "001d2dba",
+      "fileHash": "698fa076",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "e3dfc031",
+      "fileHash": "b838cf2b",
       "needsInterop": true
     },
     "react-router-dom": {
       "src": "../../node_modules/react-router-dom/dist/index.mjs",
       "file": "react-router-dom.js",
-      "fileHash": "50152f51",
+      "fileHash": "e375abbe",
       "needsInterop": false
     },
     "fuse.js": {
       "src": "../../node_modules/fuse.js/dist/fuse.mjs",
       "file": "fuse__js.js",
-      "fileHash": "e2cb35fb",
+      "fileHash": "6da2d188",
+      "needsInterop": false
+    },
+    "react-helmet-async": {
+      "src": "../../node_modules/react-helmet-async/lib/index.esm.js",
+      "file": "react-helmet-async.js",
+      "fileHash": "93d5ba8b",
       "needsInterop": false
     }
   },

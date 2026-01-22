@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { stores } from '../data/stores';
+import SEO from '../components/SEO';
 
 const Stores = () => {
     const navigate = useNavigate();
@@ -10,6 +11,12 @@ const Stores = () => {
 
     return (
         <div className="stores-page">
+            <SEO
+                title="All Stores - Verified Coupon Codes & Promo Offers"
+                description="Browse coupons and deals from top brands like Amazon, Flipkart, Myntra, Swiggy, and more. Find the best savings for your favorite online stores."
+                keywords="all stores coupons, online store offers, brand discounts, best coupon sites india"
+                canonical="/stores"
+            />
             <Header />
 
             <main className="main-content">

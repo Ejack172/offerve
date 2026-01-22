@@ -3,10 +3,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import SEO from '../components/SEO';
 
 const NotFound = () => {
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <SEO title="404 - Page Not Found" description="The page you are looking for does not exist." noindex={true} />
             <Header />
             <main style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem', background: 'var(--bg-main)' }}>
                 <div style={{ maxWidth: '600px' }}>

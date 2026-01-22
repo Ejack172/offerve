@@ -2,42 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://offerve.com/</loc>
-    <frequency>daily</frequency>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://offerve.com/stores/</loc>
-    <frequency>weekly</frequency>
+    <loc>https://offerve.com/stores</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/deal/top-offers</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://offerve.com/deals/</loc>
-    <frequency>daily</frequency>
+    <loc>https://offerve.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/privacy-policy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/terms-of-use</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <!-- Dynamic Stores -->
+  <url>
+    <loc>https://offerve.com/myntra-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/flipkart-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/ajio-coupon-code</loc>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://offerve.com/about/</loc>
-    <frequency>monthly</frequency>
-    <priority>0.5</priority>
+    <loc>https://offerve.com/swiggy-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://offerve.com/contact/</loc>
-    <frequency>monthly</frequency>
-    <priority>0.5</priority>
+    <loc>https://offerve.com/zomato-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://offerve.com/privacy-policy/</loc>
-    <frequency>monthly</frequency>
-    <priority>0.3</priority>
+    <loc>https://offerve.com/nykaa-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://offerve.com/terms-of-use/</loc>
-    <frequency>monthly</frequency>
-    <priority>0.3</priority>
+    <loc>https://offerve.com/tata-cliq-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://offerve.com/submit-coupon/</loc>
-    <frequency>monthly</frequency>
-    <priority>0.6</priority>
+    <loc>https://offerve.com/cleartrip-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/makemytrip-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/oyo-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/uber-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/amazon-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/dominos-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/pizza-hut-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/kfc-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/bookmyshow-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/adda247-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/unacademy-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://offerve.com/pw-coupon-code</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

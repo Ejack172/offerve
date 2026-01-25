@@ -156,5 +156,114 @@ export const deals = [
             <a href="https://link.super.money/46b7wowF6Ub" target="_blank" rel="nofollow noopener noreferrer" class="in-article-btn">Apply Now</a>
         </div>
     `
+    },
+    {
+        id: 'free-loot-saree-shein-bigbasket-mcdonalds',
+        slug: 'free-loot-saree-shein-bigbasket-mcdonalds',
+        title: 'Free Loot Alerts: How to Get Free Sarees, Bigbasket Cakes & McDonald\'s Freebies',
+        excerpt: 'Huge loot alert! Discover how to participate in free saree giveaways, claim a free cake from Bigbasket, and get a limited edition McDonald\'s sipper today.',
+        date: '2026-01-25',
+        author: 'Offerve Deal Hunter',
+        thumbnail: '/assets/deals/free_loot_thumbnail.png',
+        ogImage: '/assets/deals/free_loot_thumbnail.png',
+        tags: ['free sample', 'loot deal', 'bigbasket', 'mcdonalds', 'saree giveaway', 'free shopping'],
+        ctaText: 'View All Deals',
+        ctaLink: '/deals',
+        pinned: false,
+        seo: {
+            title: 'Free Loot: Free Saree Giveaway, Bigbasket Free Cake & McDonald\'s Offer (2026)',
+            description: 'Latest Loot Deals: Steps to get a free saree, Bigbasket free cake code, and McDonald\'s free sipper. Verified offers and giveaway details inside.'
+        },
+        content: `
+        <h2>Introduction: The Season of Freebies is Here!</h2>
+        <p>Who doesn't love getting premium products for free? We've rounded up the hottest <strong>loot deals</strong> currently trending. From viral <strong>free saree giveaways</strong> on YouTube to instant food freebies like <strong>Bigbasket cakes</strong> and <strong>McDonald's merchandise</strong>, there is something for everyone.</p>
+        <p>In this post, we break down exactly how to claim these offers, the terms you need to know, and how to spot genuine giveaways versus scams.</p>
+
+        <h2>1. The Viral "Free Saree" Giveaway</h2>
+        <p>You might have seen videos trending with titles like <em>"Free Saree Loot"</em>. These are typically organized by ethnic wear vendors or YouTube channels to boost engagement.</p>
+        
+        <h3>How to Participate:</h3>
+        <ul>
+            <li><strong>Watch & Subscribe:</strong> Most giveaways require you to subscribe to the host's YouTube channel.</li>
+            <li><strong>Comment:</strong> You usually need to leave a specific comment or answer a question in the video comments.</li>
+            <li><strong>Share:</strong> Sharing the video on WhatsApp or Instagram is often a requirement.</li>
+            <li><strong>Lucky Draw:</strong> Winners are typically chosen at random from the comments section.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <p><strong>⚠️ Safety Warning:</strong> Never pay "shipping charges" for a free prize. Genuine giveaways will ship the item for free. If someone asks for money to release your gift, it is likely a scam.</p>
+        </div>
+
+        <h2>2. Bigbasket Free Cake Offer (Worth ₹100)</h2>
+        <p>Bigbasket is sweetening the deal for <strong>new users</strong>. You can get a delicious tea cake or sponge cake worth ₹100 absolutely free with your order.</p>
+
+        <h3>Steps to Claim:</h3>
+        <ol>
+            <li>Download the <strong>Bigbasket App</strong> and sign up as a new user.</li>
+            <li>Add any products worth <strong>₹99 or more</strong> to your cart (vegetables, staples, etc.).</li>
+            <li>Search for "Cake" and add the specific promotional cake to your cart.</li>
+            <li>Apply Coupon Code: <strong>FREECAKE</strong> at checkout.</li>
+            <li>The cake price will drop to <strong>₹0</strong>!</li>
+        </ol>
+
+        <h2>3. McDonald's Free Sipper Offer</h2>
+        <p>McDonald's India has launched a limited-edition <strong>Coca-Cola Sipper</strong> (celebrating Republic Day) that you can get specifically with meal orders.</p>
+
+        <h3>How to Get It:</h3>
+        <ul>
+            <li><strong>Order:</strong> Buy any <strong>Medium Meal</strong>.</li>
+            <li><strong>Platform:</strong> Valid on the McDonald's App (in-store) or McDelivery.</li>
+            <li><strong>Bonus:</strong> The sipper is made from 100% recyclable materials!</li>
+        </ul>
+
+        <h2>4. Shein Free Shopping (Alternatives)</h2>
+        <p>While the original Shein app may have restrictions in some regions, many users look for "Shein Free Trial" centers. Be aware that many apps claiming to be "Shein" might be alternatives like Urbanic or local fashion apps offering similar "first order free" promos.</p>
+        <p><strong>Pro Tip:</strong> Always check the app reviews before downloading any new shopping app promising free clothes.</p>
+
+        <h2>Pros & Cons of These Loot Deals</h2>
+        <div class="comparison-table">
+            <table border="1" cellpadding="10" cellspacing="0" width="100%">
+                <tr>
+                    <th width="50%">Pros</th>
+                    <th>Cons</th>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <ul>
+                            <li><strong>Zero Cost:</strong> Genuine free products.</li>
+                            <li><strong>Low Effort:</strong> Simple steps like commenting or using a code.</li>
+                            <li><strong>High Value:</strong> Items like Sarees or Sippers are tangibly valuable.</li>
+                        </ul>
+                    </td>
+                    <td valign="top">
+                        <ul>
+                            <li><strong>Luck Based:</strong> Giveaways have no guarantee.</li>
+                            <li><strong>New Users Only:</strong> Bigbasket offer is restricted.</li>
+                            <li><strong>Stock Issues:</strong> Loot deals expire very fast.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>1. Is the Bigbasket code valid for existing users?</h3>
+        <p>No, the <strong>FREECAKE</strong> code is strictly for new users on their first order. Try using a new phone number to sign up if you want to avail it.</p>
+
+        <h3>2. Are the free sarees guaranteed?</h3>
+        <p>No. These are "Giveaways", meaning only a few lucky winners selected by the channel will receive them. It is not a "free for everyone" offer.</p>
+
+        <h3>3. When does the McDonald's offer end?</h3>
+        <p>The McDonald's Sipper offer is a "Limited Time" promotion, likely valid until stocks last or shortly after Republic Day.</p>
+
+        <h2>Final Thoughts</h2>
+        <p>These <strong>loot deals</strong> are a great way to save money and get free goodies. Just remember to act fast on the coupons and stay safe while participating in online giveaways!</p>
+        <p>For more verified offers, check out our full <a href="/deals">Deals Section</a>.</p>
+
+        <div class="in-article-cta">
+            <span class="cta-note">Want more deals like this?</span>
+            <a href="/deals" class="in-article-btn">Browse All Deals</a>
+        </div>
+        `
     }
 ];
